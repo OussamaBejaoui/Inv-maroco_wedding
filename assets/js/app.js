@@ -15400,7 +15400,7 @@ Error generating stack: ` + i.message + `
                 "aria-label": "Touchez l'écran pour commencer",
                 children: [b.jsx("video", {
                     ref: r,
-                    src: "/assets/video/intro-door.mp4",
+                    src: "assets/video/intro-door.mp4",
                     playsInline: !0,
                     preload: "auto",
                     className: "absolute inset-0 h-full w-full object-cover"
@@ -15483,7 +15483,7 @@ Error generating stack: ` + i.message + `
         LE = 1,
         $E = "3871d8db-131c-4df3-a7f1-05692a13f3a4",
         ME = "7f2f20d5-bf32-4f59-bf9a-9250f103fc2a",
-        DE = "/assets/images/hero-marocain.png",
+        DE = "assets/images/hero-marocain.png",
         UE = "a/v1/7f2f20d5-bf32-4f59-bf9a-9250f103fc2a/3871d8db-131c-4df3-a7f1-05692a13f3a4/hero_marocain.png",
         FE = "hero_marocain.png",
         zE = 2909084,
@@ -15624,7 +15624,7 @@ Error generating stack: ` + i.message + `
         JE = 1,
         QE = "220aa29d-d3c8-4ee8-863a-1b808f82b1b8",
         YE = "7f2f20d5-bf32-4f59-bf9a-9250f103fc2a",
-        XE = "/assets/images/salle-de-dinee.jpg",
+        XE = "assets/images/salle-de-dinee.jpg",
         ZE = "a/v1/7f2f20d5-bf32-4f59-bf9a-9250f103fc2a/220aa29d-d3c8-4ee8-863a-1b808f82b1b8/sale_de_dinee.jpg",
         eT = "sale_de_dinee.jpg",
         tT = 215214,
@@ -15690,7 +15690,7 @@ Error generating stack: ` + i.message + `
                 })
             })
         },
-        oT = "/assets/images/invites-illustration.png",
+        oT = "assets/images/invites-illustration.png",
         aT = () => {
             const {
                 t: e
@@ -15739,7 +15739,7 @@ Error generating stack: ` + i.message + `
         lT = 1,
         uT = "1338c42d-e6de-41f3-b5b1-c578f7fdc831",
         cT = "7f2f20d5-bf32-4f59-bf9a-9250f103fc2a",
-        dT = "/assets/images/program-background.png",
+        dT = "assets/images/program-background.png",
         hT = "a/v1/7f2f20d5-bf32-4f59-bf9a-9250f103fc2a/1338c42d-e6de-41f3-b5b1-c578f7fdc831/program-bg.png",
         fT = "program-bg.png",
         pT = 2763196,
@@ -15888,10 +15888,10 @@ Error generating stack: ` + i.message + `
                 })]
             })
         },
-        bT = "/assets/images/menu-chorba.png",
-        xT = "/assets/images/menu-plat-principal.png",
-        _T = "/assets/images/menu-fruits.png",
-        ST = "/assets/images/menu-the.png",
+        bT = "assets/images/menu-chorba.png",
+        xT = "assets/images/menu-plat-principal.png",
+        _T = "assets/images/menu-fruits.png",
+        ST = "assets/images/menu-the.png",
         kT = [{
             image: bT,
             titleKey: "menu.starter.title",
@@ -25963,7 +25963,7 @@ const Jc = AP(jP, Wp, {
     $P = 1,
     MP = "fea9c1f8-46eb-40d5-b24e-0a243321220b",
     DP = "7f2f20d5-bf32-4f59-bf9a-9250f103fc2a",
-    UP = "/assets/images/footer.jpg",
+    UP = "assets/images/footer.jpg",
     FP = "a/v1/7f2f20d5-bf32-4f59-bf9a-9250f103fc2a/fea9c1f8-46eb-40d5-b24e-0a243321220b/footer.jpg",
     zP = "footer.jpg",
     BP = 48708,

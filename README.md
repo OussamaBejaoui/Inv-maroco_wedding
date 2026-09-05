@@ -61,6 +61,20 @@ token '?'`), which is why you saw a white screen. Root cause looks like
 the export/mirroring tool mangling these operators. Fixed globally in
 this reorganized copy; both files now pass `node --check` clean.
 
+## Bug #2 fixed — absolute paths break on GitHub Pages project sites
+
+Every path started with `/` (e.g. `/assets/js/app.js`). That only
+resolves correctly when the site is served from a domain **root**.
+`python -m http.server` serves at root, so it worked there — but GitHub
+Pages project sites live at `username.github.io/repo-name/`, so an
+absolute `/assets/js/app.js` request goes to the domain root and misses
+the `repo-name/` folder → 404s → white screen.
+
+Fixed by switching every internal reference (`index.html` + the 10 asset
+paths baked into `app.js`) from absolute (`/assets/...`) to relative
+(`assets/...`). Verified against a simulated subpath deployment — every
+asset now resolves whether hosted at root or under a subfolder.
+
 ## ⚠️ Missing feature — action needed
 
 Found in `app.js`: a "TAP" overlay that unmutes **background music**
