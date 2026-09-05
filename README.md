@@ -75,6 +75,25 @@ paths baked into `app.js`) from absolute (`/assets/...`) to relative
 (`assets/...`). Verified against a simulated subpath deployment — every
 asset now resolves whether hosted at root or under a subfolder.
 
+## Bug #3 fixed — React Router had no basename, so subpaths 404 into the app's own NotFound page
+
+Routes are defined as `path: "/"`, `/admin`, `*` (catch-all → NotFound),
+with no `basename` set on the router. On a domain root that's fine
+(pathname is `/`, matches). On a GitHub Pages **project** site the real
+pathname is `/repo-name/`, which matches nothing but `*` — so what you
+saw was the wedding app's *own* "Oops! Page not found" screen (its
+`href="/"` link is why the button took you to your GitHub profile page,
+not back to the invite), not a real GitHub 404.
+
+Fixed by:
+- `index.html`: added an inline script (runs before `app.js`) that reads
+  `location.pathname` at load time and stores it as `window.__RB__` —
+  this is the deployed subpath, whatever it is, computed automatically.
+- `app.js`: passed `basename: window.__RB__ || "/"` into the router.
+
+Works unmodified whether hosted at a domain root or under any subpath —
+no repo name hardcoded anywhere.
+
 ## ⚠️ Missing feature — action needed
 
 Found in `app.js`: a "TAP" overlay that unmutes **background music**

@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    <script>
+      // Auto-detect the deployed subpath (e.g. "/repo-name/" on GitHub Pages
+      // project sites, or "/" at a domain root) so client-side routing works
+      // wherever this is hosted, without hardcoding a repo name.
+      window.__RB__ = location.pathname.replace(/index\.html$/, "");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- TODO: Set the document title to the name of your application -->

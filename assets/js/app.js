@@ -26330,6 +26330,7 @@ const Jc = AP(jP, Wp, {
         children: b.jsx(_E, {
             children: b.jsxs(bE, {
                 children: [b.jsx(LS, {}), b.jsx(L_, {}), b.jsx(n_, {
+                    basename: window.__RB__ || "/",
                     children: b.jsxs(e_, {
                         children: [b.jsx(ga, {
                             path: "/",
