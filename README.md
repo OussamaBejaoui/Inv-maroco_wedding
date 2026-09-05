@@ -1,0 +1,74 @@
+# maroco wedding invite — reorganized export
+
+## What this project actually is
+
+Not a static Tilda-style template. This be **built production output** of
+a React app (Vite + Tailwind, Radix UI, Supabase backend for RSVP), likely
+made with Lovable/gpt-engineer. `app.js` = one bundled, minified file
+containing React + all vendor libs + app code together. No separate
+source components exist in this export — only compiled output.
+
+Consequence: cannot split into clean React source files (that source was
+never given to us, only the build result). What CAN be done safely:
+reorganize files/folders and fix every path reference to match, without
+touching logic. Done below.
+
+## Structure
+
+```
+index.html
+favicon.ico
+assets/
+  css/main.css        (was assets/index-B7CFTRXZ.css)
+  js/app.js            (was assets/index-BM2pyw11.js)
+  images/
+    hero-marocain.png          (was __l5e/.../hero_marocain.png)
+    program-background.png     (was __l5e/.../program-bg.png)
+    salle-de-dinee.jpg         (was __l5e/.../sale_de_dinee.jpg)
+    footer.jpg                 (was __l5e/.../footer.jpg)
+    menu-chorba.png
+    menu-plat-principal.png
+    menu-fruits.png
+    menu-the.png
+    invites-illustration.png   (was invites-karako-CAOZLTO1.png)
+  video/
+    intro-door.mp4
+vendor/
+  tracking/
+    flock.js              (analytics script, was /~flock.js)
+    analytics-proxy.html  (mock endpoint, was api/analytics.html, body: "Accepted")
+```
+
+All 10 asset paths hardcoded as string literals inside `app.js` were
+found and rewritten to match new locations (verified: each occurred
+exactly once, all replaced, no stale refs left). `index.html` script/css/
+favicon/tracking refs updated too.
+
+## Dropped (not features of the site, crawl artifacts)
+
+- `www.google.com/search/warmup.html` — junk from headless-browser crawl.
+- `fonts.googleapis.com/css2.css`, `fonts.gstatic.com/*` — the site loads
+  fonts live from Google's real CDN via absolute URL in `index.html`
+  (`<link href="https://fonts.googleapis.com/...">`), never from a local
+  copy. These mirrored files weren't wired into the app at all.
+
+## Bug found and fixed (pre-existing, from original export — not caused by reorg)
+
+Original `app.js`/`flock.js` had `??` (nullish coalescing) and `?.`
+(optional chaining) tokens broken with a stray space — `??` → `? ?`,
+`?.` → `? .`, 56 + 6 spots. Made both files fail to parse (`Unexpected
+token '?'`), which is why you saw a white screen. Root cause looks like
+the export/mirroring tool mangling these operators. Fixed globally in
+this reorganized copy; both files now pass `node --check` clean.
+
+## ⚠️ Missing feature — action needed
+
+Found in `app.js`: a "TAP" overlay that unmutes **background music**
+(`young_and_beautiful_remix.mp3`, ~2.6MB, referenced as
+`/__l5e/assets-v1/3759acde-283d-4758-9f02-087f4d905435/young_and_beautiful_remix.mp3`).
+
+The mp3 file itself was **not included** in the site export you gave me —
+only the reference to it survived. Left the path as-is (untouched) since
+I have nothing to point it to. If hosted standalone, this feature will
+silently fail (tap button shows, no sound plays). Need the actual mp3 to
+fix — everything else is fully wired and feature-complete.
